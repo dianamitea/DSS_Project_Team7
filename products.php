@@ -1,17 +1,5 @@
 <?php
-/**
- * products.php
- * ------------
- * Displays products filtered by ?category_id=N.
- * Also supports ?q= full-text search and ?sort= ordering.
- *
- * FIXES APPLIED (PHP logic only — HTML/CSS unchanged):
- *  1. require_once 'db_connect.php'  (not dbconnect.php)
- *  2. Removed AND p.is_available = 1 from all product queries
- *  3. 'Add to Cart' button now uses:
- *         <a href="addtocart.php?id=<?php echo $product['id']; ?>">
- *     matching the simple GET-based addtocart.php file
- */
+
 
 session_start();
 require_once 'db_connect.php';
