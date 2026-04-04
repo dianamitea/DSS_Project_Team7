@@ -1,21 +1,10 @@
 <?php
-/**
- * product_details.php
- * -------------------
- * Single-product detail page.
- *
- * GET ?id=N  → fetch the product and render the detail view.
- * Missing or invalid ID → redirect to products.php.
- *
- * Schema used (no is_available column):
- *   products : id, category_id, name, description, price, image_url
- *   categories: id, name
- */
+
 
 session_start();
 require_once __DIR__ . '/db_connect.php';
 
-/* ── Validate the ID from the URL ───────────────────────────── */
+
 $productId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT, [
     'options' => ['min_range' => 1],
 ]);
@@ -25,7 +14,6 @@ if (!$productId) {
     exit;
 }
 
-/* ── Fetch the single product (with its category name) ──────── */
 $product = db_fetch_one(
     'SELECT
          p.id,
@@ -48,7 +36,6 @@ if (!$product) {
     exit;
 }
 
-/* ── Derived display values ─────────────────────────────────── */
 $price  = number_format((float) $product['price'], 2);
 
 $imgSrc = !empty($product['image_url'])
@@ -64,9 +51,6 @@ $pageTitle = htmlspecialchars($product['name']) . ' — Maison Dorée';
 require_once __DIR__ . '/header.php';
 ?>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE HERO / BREADCRUMB
-════════════════════════════════════════════════════════════ -->
 <section class="pd-hero" aria-label="Product breadcrumb">
     <div class="container">
         <nav aria-label="Breadcrumb" class="pd-breadcrumb">
@@ -84,10 +68,6 @@ require_once __DIR__ . '/header.php';
         </nav>
     </div>
 </section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     MAIN: IMAGE (left) + DETAILS (right)
-════════════════════════════════════════════════════════════ -->
 <section class="pd-section" aria-labelledby="pd-product-name">
     <div class="container">
         <div class="row g-5 align-items-start">
@@ -187,9 +167,6 @@ require_once __DIR__ . '/header.php';
     </div><!-- /.container -->
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE STYLES
-════════════════════════════════════════════════════════════ -->
 <style>
 /* ── Breadcrumb hero bar ──────────────────────────────────── */
 .pd-hero {
