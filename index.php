@@ -1,9 +1,5 @@
 <?php
-/**
- * index.php
- * ---------
- * Homepage — hero, features, and a teaser of the menu.
- */
+
 
 session_start();
 
@@ -12,9 +8,6 @@ $pageTitle = 'Maison Dorée — Artisan Bakery & Café';
 require_once __DIR__ . '/header.php';
 ?>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HERO
-════════════════════════════════════════════════════════════ -->
 <section class="hero" aria-label="Welcome to Maison Dorée">
 
     <!-- Background SVG grain + gradient layers -->
@@ -149,9 +142,6 @@ require_once __DIR__ . '/header.php';
     </div><!-- /.container -->
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     MARQUEE STRIP
-════════════════════════════════════════════════════════════ -->
 <div class="marquee-strip" aria-hidden="true">
     <div class="marquee-track">
         <?php
@@ -174,9 +164,6 @@ require_once __DIR__ . '/header.php';
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     FEATURES ROW
-════════════════════════════════════════════════════════════ -->
 <section class="section section-milk" aria-labelledby="features-heading">
     <div class="container">
 
@@ -229,9 +216,7 @@ require_once __DIR__ . '/header.php';
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     MENU TEASER
-════════════════════════════════════════════════════════════ -->
+
 <section class="section section-cream" aria-labelledby="teaser-heading">
     <div class="container">
 
@@ -322,9 +307,7 @@ require_once __DIR__ . '/header.php';
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     CTA BANNER
-════════════════════════════════════════════════════════════ -->
+
 <section class="section-espresso py-5" aria-labelledby="cta-heading">
     <div class="container">
         <div class="row align-items-center g-4">
