@@ -1,14 +1,4 @@
 <?php
-/**
- * login.php
- * ---------
- * BUG 3 FIX: replaced db_execute() (not in allowed functions) with
- *            db()->prepare()->execute() for the hash-upgrade UPDATE.
- *            password_verify() was already correct — no change there.
- *            session_start() is at the very top — already correct.
- *
- * Allowed functions: db(), db_fetch_all(), db_fetch_one()
- */
 
 session_start();
 
@@ -102,8 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email']    = $user['email'];
 
-                // Upgrade hash if needed — BUG 3 FIX: use db()->prepare()->execute()
-                // instead of db_execute() which is not in the allowed function list
+              
                 $algo = defined('PASSWORD_ARGON2ID') ? PASSWORD_ARGON2ID : PASSWORD_BCRYPT;
                 if (password_needs_rehash($user['password'], $algo)) {
                     $newHash = password_hash($password, $algo);
@@ -140,9 +129,6 @@ $pageTitle = 'Sign In — Maison Dorée';
 require_once __DIR__ . '/header.php';
 ?>
 
-<!-- ═══════════════════════════════════════════════════════════
-     LOGIN PAGE
-════════════════════════════════════════════════════════════ -->
 <section class="auth-section" aria-labelledby="login-heading">
     <div class="container">
         <div class="row justify-content-center">
