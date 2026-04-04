@@ -1,35 +1,33 @@
-
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+;
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
+-- Database: `cafe_db`
+-- Table structure for table `categories`
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
+-- Dumping data for table `categories`
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Coffee'),
-(2, 'Tea'),
-(3, 'Cakes'),
-(4, 'Pastries'),
-(5, 'Sandwiches'),
-(6, 'Tarts'),
-(7, 'Cold Drinks'),
-(8, 'Specialty Coffee'),
-(9, 'Breads');
+(1, 'Breads'),
+(2, 'Cakes'),
+(3, 'Coffee'),
+(4, 'Cold Drinks'),
+(5, 'Pastries'),
+(6, 'Sandwiches'),
+(7, 'Specialty Coffee'),
+(8, 'Tarts'),
+(9, 'Tea');
 
 
+
+
+-- Table structure for table `orders`
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
@@ -39,6 +37,7 @@ CREATE TABLE `orders` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Dumping data for table `orders`
 
 INSERT INTO `orders` (`id`, `user_id`, `total_price`, `status`, `created_at`) VALUES
 (5, 1, 12.25, 'completed', '2026-03-28 18:46:57'),
@@ -52,6 +51,7 @@ INSERT INTO `orders` (`id`, `user_id`, `total_price`, `status`, `created_at`) VA
 (13, NULL, 6.00, 'pending', '2026-04-03 20:52:46'),
 (14, NULL, 6.00, 'pending', '2026-04-03 23:14:36');
 
+-- Table structure for table `products`
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
@@ -62,39 +62,38 @@ CREATE TABLE `products` (
   `image_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
+-- Dumping data for table `products`
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `image_url`) VALUES
-(1, 1, 'Espresso', 'Strong and classic.', 2.50, 'espresso.jpg'),
-(2, 1, 'Cappuccino', 'Creamy with foam.', 3.50, 'cappuccino.jpg'),
-(3, 3, 'Chocolate Cake', 'Rich dark chocolate.', 4.00, 'cake.jpg'),
-(4, 5, 'Club Sandwich', 'Triple-decker with grilled chicken, crispy bacon, lettuce, tomato and mayo on toasted white bread.', 6.50, 'club_sandwich.jpg'),
-(5, 5, 'Tuna Melt', 'Creamy tuna salad with melted cheddar on sourdough, served warm.', 5.75, 'tuna_melt.jpg'),
-(6, 5, 'Veggie Wrap', 'Grilled peppers, hummus, cucumber, spinach and feta rolled in a whole-wheat tortilla.', 5.25, 'veggie_wrap.jpg'),
-(7, 5, 'BLT Panini', 'Bacon, fresh lettuce and sun-dried tomatoes pressed in a ciabatta roll.', 5.50, 'blt_panini.jpg'),
-(8, 2, 'Green Tea', 'Delicate Japanese Sencha green tea, light and refreshing.', 3.00, 'green_tea.jpg'),
-(9, 2, 'Earl Grey', 'Classic black tea blended with bergamot oil, served with a lemon slice.', 3.00, 'earl_grey.jpg'),
-(10, 2, 'Chamomile Herbal Tea', 'Soothing caffeine-free chamomile blossoms, perfect any time of day.', 3.25, 'chamomile_tea..jpg'),
-(11, 2, 'Chai Latte', 'Spiced black tea with cinnamon, cardamom and steamed milk.', 4.25, 'chai_latte.jpg'),
-(12, 2, 'Matcha Latte', 'Ceremonial-grade matcha whisked with frothy oat milk.', 4.75, 'matcha_latte.jpg'),
-(13, 7, 'Iced Latte', 'Double espresso poured over ice with your choice of milk.', 4.50, 'iced_latte.jpg'),
-(14, 7, 'Mango Smoothie', 'Fresh mango blended with banana, orange juice and a hint of ginger.', 5.00, 'mango_smootie.jpg'),
-(15, 7, 'Strawberry Lemonade', 'House-made lemonade infused with fresh strawberry purée.', 4.00, 'strawberry_lemonade.jpg'),
-(16, 7, 'Cold Brew Coffee', 'Slow-steeped for 18 hours, smooth with low acidity. Served over ice.', 4.75, 'cold_brew.jpg'),
-(17, 7, 'Sparkling Water', 'Chilled sparkling mineral water with a slice of lemon or lime.', 2.50, 'sparkling_water.jpg'),
-(18, 8, 'Flat White', 'Ristretto espresso with a silky microfoam – the barista\'s choice.', 4.00, 'flat_white.jpg'),
-(19, 8, 'Caramel Macchiato', 'Vanilla syrup, steamed milk, espresso and a drizzle of caramel sauce.', 5.00, 'caramel_macchiato.jpg'),
-(20, 8, 'Hazelnut Mocha', 'Espresso blended with rich chocolate sauce and hazelnut syrup, topped with whipped cream.', 5.25, 'hazelnut_mocha.jpg'),
-(21, 4, 'Blueberry Muffin', 'Freshly baked muffin bursting with juicy blueberries and a golden crumble top.', 3.50, 'blueberry_muffin.jpg'),
-(22, 4, 'Croissant', 'Buttery, flaky all-butter croissant baked fresh every morning.', 3.25, 'croissant.jpg')
-(23, 6, 'Lemon Tart', 'A delicate lemon tart with a crisp, buttery crust filled with smooth, tangy lemon cream—perfectly balanced between sweet and refreshing', 6.5,'lemon_tart.jpg')
-(24, 9, 'Sourdough Bread', 'A rustic sourdough loaf with a crisp, golden-brown crust and a soft, airy interior—rich in flavor with a subtle tang, handcrafted for a perfect balance of texture and depth.', 4.0, 'sourdough_bread.jpg');
+(1, 3, 'Espresso', 'Strong and classic.', 2.50, 'espresso.jpg'),
+(2, 3, 'Cappuccino', 'Creamy with foam.', 3.50, 'cappuccino.jpg'),
+(3, 2, 'Chocolate Cake', 'Rich dark chocolate.', 4.00, 'cake.jpg'),
+(4, 6, 'Club Sandwich', 'Triple-decker with grilled chicken, crispy bacon, lettuce, tomato and mayo on toasted white bread.', 6.50, 'club_sandwich.jpg'),
+(5, 6, 'Tuna Melt', 'Creamy tuna salad with melted cheddar on sourdough, served warm.', 5.75, 'tuna_melt.jpg'),
+(6, 6, 'Veggie Wrap', 'Grilled peppers, hummus, cucumber, spinach and feta rolled in a whole-wheat tortilla.', 5.25, 'veggie_wrap.jpg'),
+(7, 6, 'BLT Panini', 'Bacon, fresh lettuce and sun-dried tomatoes pressed in a ciabatta roll.', 5.50, 'blt_panini.jpg'),
+(8, 9, 'Green Tea', 'Delicate Japanese Sencha green tea, light and refreshing.', 3.00, 'green_tea.jpg'),
+(9, 9, 'Earl Grey', 'Classic black tea blended with bergamot oil, served with a lemon slice.', 3.00, 'earl_grey.jpg'),
+(10, 9, 'Chamomile Herbal Tea', 'Soothing caffeine-free chamomile blossoms, perfect any time of day.', 3.25, 'chamomile_tea..jpg'),
+(11, 9, 'Chai Latte', 'Spiced black tea with cinnamon, cardamom and steamed milk.', 4.25, 'chai_latte.jpg'),
+(12, 9, 'Matcha Latte', 'Ceremonial-grade matcha whisked with frothy oat milk.', 4.75, 'matcha_latte.jpg'),
+(13, 4, 'Iced Latte', 'Double espresso poured over ice with your choice of milk.', 4.50, 'iced_latte.jpg'),
+(14, 4, 'Mango Smoothie', 'Fresh mango blended with banana, orange juice and a hint of ginger.', 5.00, 'mango_smootie.jpg'),
+(15, 4, 'Strawberry Lemonade', 'House-made lemonade infused with fresh strawberry purée.', 4.00, 'strawberry_lemonade.jpg'),
+(16, 4, 'Cold Brew Coffee', 'Slow-steeped for 18 hours, smooth with low acidity. Served over ice.', 4.75, 'cold_brew.jpg'),
+(17, 4, 'Sparkling Water', 'Chilled sparkling mineral water with a slice of lemon or lime.', 2.50, 'sparkling_water.jpg'),
+(19, 7, 'Flat White', 'Ristretto espresso with a silky microfoam – the barista\s choice."', 4.00, 'flat_white.jpg'),
+(20, 7, 'Caramel Macchiato', 'Vanilla syrup, steamed milk, espresso and a drizzle of caramel sauce.', 5.00, 'caramel_macchiato.jpg'),
+(21, 7, 'Hazelnut Mocha', 'Espresso blended with rich chocolate sauce and hazelnut syrup, topped with whipped cream.', 5.25, 'hazelnut_mocha.jpg'),
+(22, 5, 'Blueberry Muffin', 'Freshly baked muffin bursting with juicy blueberries and a golden crumble top.', 3.50, 'blueberry_muffin.jpg'),
+(23, 5, 'Croissant', 'Buttery, flaky all-butter croissant baked fresh every morning.', 3.25, 'croissant.jpg'),
+(24, 8, 'Lemon Tart', 'A delicate lemon tart with a crisp, buttery crust filled with smooth, tangy lemon cream—perfectly balanced between sweet and refreshing', 6.50, 'lemon_tart.jpg'),
+(25, 1, 'Sourdough Bread', 'A rustic sourdough loaf with a crisp, golden-brown crust and a soft, airy interior—rich in flavor with a subtle tang, handcrafted for a perfect balance of texture and depth.', 4.00, 'sourdough_bread.jpg)');
 
--- --------------------------------------------------------
 
---
+
+
 -- Table structure for table `reservations`
---
 
 CREATE TABLE `reservations` (
   `id` int(11) NOT NULL,
@@ -110,14 +109,19 @@ CREATE TABLE `reservations` (
 -- Dumping data for table `reservations`
 --
 
-INSERT INTO `reservations` (`id`, `user_id`, `res_date`, `res_time`, `guests`, `status`) VALUES
-(1, 1, '2026-04-04', '12:00:00', 2, 'confirmed'),
-(2, 2, '2026-04-05', '19:30:00', 4, 'confirmed'),
-(3, 3, '2026-04-06', '13:00:00', 3, ''),
-(4, 1, '2026-04-08', '20:00:00', 2, ''),
-(5, 2, '2026-04-10', '18:00:00', 6, 'confirmed');
+INSERT INTO `reservations` (`id`, `user_id`, `res_date`, `res_time`, `guests`, `status`, `notes`) VALUES
+(1, 1, '2026-04-04', '12:00:00', 2, 'confirmed', NULL),
+(2, 2, '2026-04-05', '19:30:00', 4, 'confirmed', NULL),
+(3, 3, '2026-04-06', '13:00:00', 3, '', NULL),
+(4, 1, '2026-04-08', '20:00:00', 2, '', NULL),
+(5, 2, '2026-04-10', '18:00:00', 6, 'confirmed', NULL),
+(6, 10, '2026-04-14', '13:00:00', 2, 'confirmed', 'Testy Test');
 
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `users`
+--
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
@@ -134,7 +138,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
 (1, 'client1', 'client1@example.com', '123456', '2026-04-03 17:40:22'),
 (2, 'client2', 'client2@example.com', '$2y$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', '2026-04-03 17:40:22'),
-(3, 'client3', 'client3@example.com', '$2y$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', '2026-04-03 17:40:22');
+(3, 'client3', 'client3@example.com', '$2y$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW', '2026-04-03 17:40:22'),
+(10, 'didyboom', 'dianamitea16@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$QzRVaURjaU96eWdBMnNOOA$CyhCa5agzdhc/yanMTkHxlOUdTqP8T0OdsXZoEZrf3g', '2026-04-04 13:47:12');
 
 --
 -- Indexes for dumped tables
@@ -173,7 +178,8 @@ ALTER TABLE `reservations`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -183,31 +189,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
