@@ -1,19 +1,5 @@
 <?php
-/**
- * checkout.php
- * ------------
- * Two-phase page:
- *
- *  GET  → Show order review form (cart summary + customer details).
- *  POST → Validate, insert into `orders` (and optionally `order_items`),
- *         clear the session cart, redirect to success.php.
- *
- * FIXES APPLIED (PHP logic only — HTML/CSS unchanged):
- *  1. require_once 'db_connect.php'  (not dbconnect.php)
- *  2. Removed AND p.is_available = 1 from loadCart() SQL
- *  3. unset($_SESSION['cart']) clears the basket after a successful order
- *  4. header('Location: success.php'); exit(); is the final step on success
- */
+
 
 declare(strict_types=1);
 session_start();
@@ -128,9 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $pdo = db();
                 $pdo->beginTransaction();
 
-                // ── INSERT into orders ──────────────────────
-                // FIX: Uses the correct table name `orders` and columns
-                //      `user_id`, `total_price` that exist in this schema.
+          
                 $stmt = $pdo->prepare(
                     'INSERT INTO orders (user_id, total_price)
                      VALUES (:uid, :total)'
@@ -192,9 +176,7 @@ $pageTitle = 'Checkout — Maison Dorée';
 require_once __DIR__ . '/header.php';
 ?>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE HERO
-════════════════════════════════════════════════════════════ -->
+
 <section class="chk-hero" aria-labelledby="chk-heading">
     <div class="container">
         <nav aria-label="Breadcrumb" class="chk-breadcrumb mb-3">
@@ -225,9 +207,6 @@ require_once __DIR__ . '/header.php';
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     MAIN
-════════════════════════════════════════════════════════════ -->
 <div class="container chk-layout py-5">
 
     <!-- Global errors -->
@@ -475,9 +454,6 @@ require_once __DIR__ . '/header.php';
     </div><!-- /.row -->
 </div><!-- /.container -->
 
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE STYLES  (unchanged)
-════════════════════════════════════════════════════════════ -->
 <style>
 /* ── Hero ──────────────────────────────────────────────────── */
 .chk-hero {
