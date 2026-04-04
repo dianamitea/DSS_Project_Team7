@@ -3,6 +3,16 @@
 
 session_start();
 
+require_once __DIR__ . '/db_connect.php';
+
+$homeProducts = db_fetch_all(
+    'SELECT p.id, p.name, p.description, p.price, p.image_url, c.name AS category_name
+     FROM products p
+     JOIN categories c ON c.id = p.category_id
+     ORDER BY p.id DESC
+     LIMIT 4'
+);
+
 $pageTitle = 'Maison Dorée — Artisan Bakery & Café';
 
 require_once __DIR__ . '/header.php';
@@ -233,75 +243,116 @@ require_once __DIR__ . '/header.php';
             </div>
         </div>
 
-        <div class="row g-4">
-            <?php
-            $teaserItems = [
-                [
-                    'name'  => 'Butter Croissant',
-                    'cat'   => 'Pastries',
-                    'price' => '2.80',
-                    'desc'  => 'Flaky, golden layers with rich European butter.',
-                    'badge' => '',
-                    'color' => '#C8935A',
-                ],
-                [
-                    'name'  => 'Lemon Tart',
-                    'cat'   => 'Cakes & Tarts',
-                    'price' => '4.80',
-                    'desc'  => 'Silky citrus curd in a buttery shortcrust shell.',
-                    'badge' => 'Chef\'s Pick',
-                    'color' => '#9C6B3C',
-                ],
-                [
-                    'name'  => 'Sourdough Loaf',
-                    'cat'   => 'Breads',
-                    'price' => '6.00',
-                    'desc'  => 'Slow-fermented 72-hour levain with open crumb.',
-                    'badge' => 'Best Seller',
-                    'color' => '#5C3317',
-                ],
-                [
-                    'name'  => 'Flat White',
-                    'cat'   => 'Hot Drinks',
-                    'price' => '4.00',
-                    'desc'  => 'Double ristretto with velvety steamed micro-foam.',
-                    'badge' => '',
-                    'color' => '#2C1A0E',
-                ],
-            ];
-            foreach ($teaserItems as $item): ?>
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <article class="card product-teaser-card" aria-label="<?= htmlspecialchars($item['name']) ?>">
+        <?php
+            if (!$homeProducts) {
+                $homeProducts = [
+                    [
+                        'id'           => 0,
+                        'name'         => 'Butter Croissant',
+                        'category_name'=> 'Pastries',
+                        'price'        => '2.80',
+                        'description'  => 'Flaky, golden layers with rich European butter.',
+                        'image_url'    => '',
+                    ],
+                    [
+                        'id'           => 0,
+                        'name'         => 'Lemon Tart',
+                        'category_name'=> 'Cakes & Tarts',
+                        'price'        => '4.80',
+                        'description'  => 'Silky citrus curd in a buttery shortcrust shell.',
+                        'image_url'    => '',
+                    ],
+                    [
+                        'id'           => 0,
+                        'name'         => 'Sourdough Loaf',
+                        'category_name'=> 'Breads',
+                        'price'        => '6.00',
+                        'description'  => 'Slow-fermented 72-hour levain with open crumb.',
+                        'image_url'    => '',
+                    ],
+                    [
+                        'id'           => 0,
+                        'name'         => 'Flat White',
+                        'category_name'=> 'Hot Drinks',
+                        'price'        => '4.00',
+                        'description'  => 'Double ristretto with velvety steamed micro-foam.',
+                        'image_url'    => '',
+                    ],
+                ];
+            }
+            
+            // Batch products into slides (3 per slide)
+            $itemsPerSlide = 3;
+            $slides = array_chunk($homeProducts, $itemsPerSlide);
+        ?>
 
-                        <!-- Colour-block image placeholder -->
-                        <div class="product-teaser-card__thumb"
-                             style="background-color:<?= $item['color'] ?>;" aria-hidden="true">
-                            <i class="bi bi-cup-hot product-teaser-card__icon"></i>
+        <div id="homeProductCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+            <div class="carousel-indicators">
+                <?php foreach ($slides as $slideIndex => $slide): ?>
+                    <button
+                        type="button"
+                        data-bs-target="#homeProductCarousel"
+                        data-bs-slide-to="<?= $slideIndex ?>"
+                        class="<?= $slideIndex === 0 ? 'active' : '' ?>"
+                        aria-current="<?= $slideIndex === 0 ? 'true' : 'false' ?>"
+                        aria-label="Slide <?= $slideIndex + 1 ?>">
+                    </button>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="carousel-inner">
+                <?php foreach ($slides as $slideIndex => $slide): ?>
+                    <div class="carousel-item <?= $slideIndex === 0 ? 'active' : '' ?>">
+                        <div class="row g-4 carousel-row">
+                            <?php foreach ($slide as $item):
+                                $price = number_format((float) ($item['price'] ?? 0), 2);
+                                $thumbStyle = !empty($item['image_url'])
+                                    ? 'background-image:url(images/' . htmlspecialchars($item['image_url'], ENT_QUOTES) . ');'
+                                    : 'background-color:#C8935A;';
+                                $itemLink = !empty($item['id'])
+                                    ? 'product_details.php?id=' . (int) $item['id']
+                                    : 'products.php';
+                            ?>
+                                <div class="col-12 col-md-6 col-lg-4">
+                                    <article class="card product-teaser-card carousel-card" aria-label="<?= htmlspecialchars($item['name']) ?>">
+
+                                        <div class="product-teaser-card__thumb" style="<?= $thumbStyle ?>" aria-hidden="true">
+                                            <?php if (empty($item['image_url'])): ?>
+                                                <i class="bi bi-cup-hot product-teaser-card__icon"></i>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <p class="product-teaser-card__cat"><?= htmlspecialchars($item['category_name'] ?? '') ?></p>
+                                            <h3 class="card-title"><?= htmlspecialchars($item['name']) ?></h3>
+                                            <p class="card-text mb-3"><?= htmlspecialchars(mb_strimwidth($item['description'] ?? '', 0, 100, '…')) ?></p>
+
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="card-price">€<?= $price ?></span>
+                                                <a href="<?= htmlspecialchars($itemLink, ENT_QUOTES) ?>" class="btn btn-primary btn-sm">
+                                                    View
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </article>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
 
-                        <div class="card-body">
-                            <?php if ($item['badge']): ?>
-                                <span class="badge-cafe badge-new mb-2 d-inline-block">
-                                    <?= htmlspecialchars($item['badge']) ?>
-                                </span>
-                            <?php endif; ?>
-
-                            <p class="product-teaser-card__cat"><?= htmlspecialchars($item['cat']) ?></p>
-                            <h3 class="card-title"><?= htmlspecialchars($item['name']) ?></h3>
-                            <p class="card-text mb-3"><?= htmlspecialchars($item['desc']) ?></p>
-
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="card-price">€<?= $item['price'] ?></span>
-                                <!-- FIX 4: menu.php → products.php -->
-                                <a href="products.php" class="btn btn-primary btn-sm">
-                                    Order
-                                </a>
-                            </div>
-                        </div>
-
-                    </article>
-                </div>
-            <?php endforeach; ?>
+            <?php if (count($slides) > 1): ?>
+                <button class="carousel-control-prev" type="button" data-bs-target="#homeProductCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#homeProductCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            <?php endif; ?>
         </div>
 
     </div>
@@ -452,10 +503,12 @@ require_once __DIR__ . '/header.php';
 
 /* ── Product teaser cards ────────────────────── */
 .product-teaser-card__thumb {
-    height: 160px;
+    height: 220px;
     display: flex; align-items: center; justify-content: center;
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
 }
 .product-teaser-card__icon {
     font-size: 3rem;
@@ -467,6 +520,34 @@ require_once __DIR__ . '/header.php';
     text-transform: uppercase;
     color: var(--cafe-muted);
     margin-bottom: .2rem;
+}
+.carousel-card {
+    border: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    height: 100%;
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+.carousel-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+.carousel-row {
+    align-items: stretch;
+}
+.carousel .carousel-control-prev,
+.carousel .carousel-control-next {
+    filter: drop-shadow(0 0 2px rgba(0,0,0,.3));
+}
+.carousel-indicators [data-bs-target] {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,.7);
+}
+.carousel-indicators .active {
+    background-color: var(--cafe-espresso);
 }
 </style>
 
