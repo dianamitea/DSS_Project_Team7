@@ -1,25 +1,9 @@
 <?php
-/**
- * categories.php
- * --------------
- * Displays every category from `cafe_db`.`categories` as a visual
- * card grid. Each card links to products.php?category_id=N.
- *
- * SQL used:
- *   SELECT c.id, c.name,
- *          COUNT(p.id) AS product_count
- *     FROM categories c
- *     LEFT JOIN products p
- *            ON p.category_id = c.id
- *           AND p.is_available = 1
- *    GROUP BY c.id, c.name
- *    ORDER BY c.name ASC
- */
+
 
 session_start();
 require_once __DIR__ . '/db_connect.php';
 
-/* ── Fetch all categories with live product counts ─────────── */
 $categories = db_fetch_all(
     'SELECT
          c.id,
@@ -33,9 +17,6 @@ $categories = db_fetch_all(
      ORDER BY c.name ASC'
 );
 
-/* ── Per-category visual config (icon, palette, tagline) ────── */
-// Keyed by lowercase category name for easy matching.
-// Fallback values are applied for any DB category not listed here.
 $categoryMeta = [
     'pastries'      => [
         'icon'    => 'bi-sun',
@@ -94,9 +75,7 @@ $totalProducts = array_sum(array_column($categories, 'product_count'));
 require_once __DIR__ . '/header.php';
 ?>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE HERO
-════════════════════════════════════════════════════════════ -->
+
 <section class="cat-hero" aria-labelledby="cat-hero-heading">
     <div class="cat-hero__bg" aria-hidden="true"></div>
     <div class="container position-relative z-1">
@@ -146,9 +125,7 @@ require_once __DIR__ . '/header.php';
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     CATEGORIES GRID
-════════════════════════════════════════════════════════════ -->
+
 <section class="section section-cream" aria-labelledby="categories-grid-label">
     <h2 class="visually-hidden" id="categories-grid-label">Browse by Category</h2>
     <div class="container">
@@ -233,9 +210,7 @@ require_once __DIR__ . '/header.php';
     </div><!-- /.container -->
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     DAILY SPECIALS BANNER
-════════════════════════════════════════════════════════════ -->
+
 <section class="specials-banner" aria-label="Daily specials">
     <div class="container">
         <div class="row align-items-center g-4">
@@ -261,11 +236,9 @@ require_once __DIR__ . '/header.php';
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE STYLES
-════════════════════════════════════════════════════════════ -->
+
 <style>
-/* ── Hero ─────────────────────────────────────────────────── */
+
 .cat-hero {
     background-color: var(--cafe-espresso);
     padding: 3.5rem 0 3rem;
@@ -318,7 +291,6 @@ require_once __DIR__ . '/header.php';
 .cat-search__input:focus { box-shadow: none; border-color: transparent; }
 .cat-search__btn { border-radius: 0 !important; padding: .65rem 1.2rem; font-size: .82rem; }
 
-/* ── Category Cards ───────────────────────────────────────── */
 .cat-card {
     display: flex;
     flex-direction: column;
@@ -335,7 +307,7 @@ require_once __DIR__ . '/header.php';
         transform    var(--transition-base),
         border-color var(--transition-base);
 
-    /* Staggered entrance */
+
     opacity: 0;
     transform: translateY(18px);
     animation: cardReveal .55s ease forwards;
@@ -359,7 +331,7 @@ require_once __DIR__ . '/header.php';
     overflow: hidden;
 }
 
-/* Decorative ring inside swatch */
+
 .cat-card__ring {
     position: absolute;
     width: 220px; height: 220px;
@@ -437,7 +409,7 @@ require_once __DIR__ . '/header.php';
 }
 .cat-card:hover .cat-card__cta { gap: .5rem; }
 
-/* ── Empty state ──────────────────────────────────────────── */
+
 .cat-empty {
     text-align: center;
     padding: 5rem 1rem;
@@ -458,7 +430,7 @@ require_once __DIR__ . '/header.php';
 }
 .cat-empty__body { color: var(--cafe-muted); font-size: .95rem; }
 
-/* ── Specials Banner ──────────────────────────────────────── */
+
 .specials-banner {
     background-color: var(--cafe-espresso);
     padding: 2.5rem 0;
@@ -488,7 +460,6 @@ require_once __DIR__ . '/header.php';
     max-width: 54ch;
 }
 
-/* ── Reduced-motion safety ────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
     .cat-card { animation: none; opacity: 1; transform: none; }
 }
