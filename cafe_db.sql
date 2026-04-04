@@ -98,7 +98,8 @@ CREATE TABLE `reservations` (
   `res_date` date NOT NULL,
   `res_time` time NOT NULL,
   `guests` int(11) NOT NULL,
-  `status` enum('confirmed','cancelled') DEFAULT 'confirmed'
+  `status` enum('confirmed','cancelled') DEFAULT 'confirmed',
+  `notes` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
