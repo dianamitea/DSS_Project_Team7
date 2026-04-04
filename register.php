@@ -1,4 +1,29 @@
 <?php
+// 1. Include your custom functions file so PHP knows what db_insert() is
+require_once 'db_functions.php';
+
+// 2. Establish your database connection (replace with your actual connection code if different)
+$conn = mysqli_connect("localhost", "root", "", "cafe_db");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// ... your other form processing code ...
+
+// Assuming you grabbed these from your HTML form (e.g., $_POST['username'])
+$username = $_POST['username'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+// 3. Call YOUR custom function!
+// Make sure you pass the $conn variable as the first piece of data
+if (db_insert($conn, $username, $email, $password)) {
+    echo "Success! User registered.";
+} else {
+    echo "Something went wrong during registration.";
+}
+
 /**
  * register.php
  * ------------
@@ -99,10 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $hash = password_hash($password, $algo);
 
             try {
-                db_insert(
-                    'INSERT INTO users (username, email, password) VALUES (:u, :e, :p)',
-                    [':u' => $username, ':e' => $email, ':p' => $hash]
-                );
+                db_insert($conn, $username, $email, $hash);
 
                 $_SESSION['flash'] = [
                     'type'    => 'success',
