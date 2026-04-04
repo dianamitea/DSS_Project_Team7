@@ -1,18 +1,5 @@
 <?php
-/**
- * cart.php
- * --------
- * Displays the session cart as a styled Bootstrap table.
- * Lets users update quantities, remove items, or clear the whole cart.
- * Shows a live order summary with subtotal, delivery, and total.
- *
- * FIXES APPLIED (PHP logic only — HTML/CSS unchanged):
- *  1. Uses require_once 'db_connect.php'  (not dbconnect.php)
- *  2. Removed AND p.is_available = 1 from the SQL (column does not exist)
- *  3. 'Proceed to Checkout' button href points to checkout.php
- *  BUG 4 FIX: 'Browse Menu' href → products.php  (was categories.php)
- *  BUG 1 FIX: 'Clear Cart' form action → clearcart.php  (simple redirect handler)
- */
+
 
 declare(strict_types=1);
 session_start();
@@ -24,7 +11,7 @@ if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
-/* ── Load cart items from DB ────────────────────────────────── */
+
 $cartSession = $_SESSION['cart'] ?? [];
 $cartItems   = [];
 $subtotal    = 0.0;
@@ -69,9 +56,6 @@ $pageTitle = 'Your Cart — Maison Dorée';
 require_once __DIR__ . '/header.php';
 ?>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE HERO
-════════════════════════════════════════════════════════════ -->
 <section class="cart-hero" aria-labelledby="cart-heading">
     <div class="container">
         <nav aria-label="Breadcrumb" class="cart-breadcrumb mb-3">
@@ -95,13 +79,10 @@ require_once __DIR__ . '/header.php';
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     MAIN LAYOUT
-════════════════════════════════════════════════════════════ -->
 <div class="container cart-layout py-5">
 
     <?php if (empty($cartItems)): ?>
-        <!-- ── EMPTY STATE ─────────────────────────────────── -->
+    
         <div class="cart-empty" role="status">
             <div class="cart-empty__icon-wrap" aria-hidden="true">
                 <i class="bi bi-basket2"></i>
@@ -123,10 +104,9 @@ require_once __DIR__ . '/header.php';
     <?php else: ?>
         <div class="row g-5 align-items-start">
 
-            <!-- ── CART TABLE (left) ───────────────────────── -->
+          
             <div class="col-12 col-lg-8">
 
-                <!-- Desktop table -->
                 <div class="cart-table-wrap d-none d-md-block">
                     <table class="table cart-table" aria-label="Cart items">
                         <thead>
@@ -325,7 +305,7 @@ require_once __DIR__ . '/header.php';
 
             </div><!-- /col cart table -->
 
-            <!-- ── ORDER SUMMARY (right) ───────────────────── -->
+            
             <div class="col-12 col-lg-4">
                 <div class="cart-summary" aria-label="Order summary">
 
@@ -394,9 +374,6 @@ require_once __DIR__ . '/header.php';
 
 </div><!-- /.container -->
 
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE STYLES
-════════════════════════════════════════════════════════════ -->
 <style>
 /* ── Hero ──────────────────────────────────────────────────── */
 .cart-hero {
@@ -422,10 +399,8 @@ require_once __DIR__ . '/header.php';
     color:rgba(245,236,215,.45); margin:0;
 }
 
-/* ── Layout ────────────────────────────────────────────────── */
 .cart-layout { min-height:55vh; }
 
-/* ── Empty State ───────────────────────────────────────────── */
 .cart-empty {
     text-align:center; padding:5rem 1rem; max-width:440px; margin:0 auto;
 }
@@ -442,7 +417,6 @@ require_once __DIR__ . '/header.php';
 }
 .cart-empty__body { color:var(--cafe-muted); font-size:.95rem; max-width:36ch; margin:0 auto; }
 
-/* ── Cart Table ────────────────────────────────────────────── */
 .cart-table-wrap {
     border:1px solid var(--cafe-border);
     border-radius:var(--bs-border-radius-xl);
@@ -462,7 +436,7 @@ require_once __DIR__ . '/header.php';
 .cart-row { transition:background var(--transition-base); }
 .cart-row:hover { background:var(--cafe-milk); }
 
-/* ── Thumbnail ─────────────────────────────────────────────── */
+
 .cart-thumb {
     width:64px; height:64px; border-radius:.5rem;
     overflow:hidden; flex-shrink:0;
@@ -477,7 +451,7 @@ require_once __DIR__ . '/header.php';
     font-size:1.4rem; color:var(--cafe-latte);
 }
 
-/* ── Row text ──────────────────────────────────────────────── */
+
 .cart-row__cat {
     font-size:.68rem; letter-spacing:.09em; text-transform:uppercase;
     color:var(--cafe-muted); display:block; margin-bottom:.15rem;
@@ -494,7 +468,7 @@ require_once __DIR__ . '/header.php';
     font-weight:600; color:var(--cafe-coffee); white-space:nowrap;
 }
 
-/* ── Qty Stepper ───────────────────────────────────────────── */
+
 .qty-stepper {
     display:inline-flex; align-items:center;
     border:1px solid var(--cafe-border);
@@ -528,7 +502,7 @@ require_once __DIR__ . '/header.php';
     width:1px; height:1px; overflow:hidden;
 }
 
-/* ── Remove button ─────────────────────────────────────────── */
+
 .cart-row__remove {
     background:none; border:none; padding:.3rem .4rem;
     color:var(--cafe-muted); border-radius:.35rem;
@@ -539,10 +513,10 @@ require_once __DIR__ . '/header.php';
     color:var(--cafe-rose); background:var(--cafe-rose-light);
 }
 
-/* ── Actions bar ───────────────────────────────────────────── */
+
 .cart-actions { padding-top:.75rem; border-top:1px dashed var(--cafe-border); }
 
-/* ── Mobile card list ──────────────────────────────────────── */
+
 .cart-mobile-list { display:flex; flex-direction:column; gap:.75rem; }
 .cart-mobile-card {
     background:var(--cafe-white);
@@ -552,7 +526,7 @@ require_once __DIR__ . '/header.php';
     box-shadow:var(--shadow-sm);
 }
 
-/* ── Order Summary card ────────────────────────────────────── */
+
 .cart-summary {
     background:var(--cafe-white);
     border:1px solid var(--cafe-border);
@@ -584,7 +558,7 @@ require_once __DIR__ . '/header.php';
 
 .cart-summary__checkout { margin-bottom:1.25rem; font-size:.9rem; letter-spacing:.04em; }
 
-/* Trust list */
+
 .cart-trust {
     list-style:none; margin:0; padding:0;
     display:flex; flex-direction:column; gap:.4rem;
@@ -598,7 +572,6 @@ require_once __DIR__ . '/header.php';
 </style>
 
 <script>
-/* ── Quantity stepper (± buttons) ───────────────────────────── */
 document.querySelectorAll('.qty-stepper').forEach(stepper => {
     const input    = stepper.querySelector('.qty-input');
     const minusBtn = stepper.querySelector('[data-action="dec"]');
