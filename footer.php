@@ -1,19 +1,9 @@
 <?php
-/**
- * footer.php
- * ----------
- * BUG 5 FIX: Updated broken footer nav links:
- *   href="menu.php"         → href="products.php"
- *   href="reservations.php" → href="reservation.php"
- * No HTML structure, CSS, or layout changed.
- */
+
 ?>
 
 </main><!-- /#main-content -->
 
-<!-- ═══════════════════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════════════════════ -->
 <footer class="footer" role="contentinfo">
     <div class="container">
 
@@ -125,9 +115,7 @@
     </div><!-- /.container -->
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════
-     BOOTSTRAP 5 JS BUNDLE  (includes Popper)
-════════════════════════════════════════════════════════════ -->
+
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmXOJMNbOOeCT2+J0MR2xFry5Yw3w=="
