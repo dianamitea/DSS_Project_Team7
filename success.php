@@ -1,20 +1,5 @@
 <?php
-/**
- * success.php
- * -----------
- * Universal "Thank You" confirmation page.
- *
- * Reads context from $_SESSION['success_context']:
- *   type = 'reservation'
- *     → reservation_id, name, res_date, res_time, guests
- *   type = 'order'
- *     → order_id, name, email, total, item_count, pickup
- *
- * Also accepts $_SESSION['order_confirm'] (set by checkout.php)
- * so both sessions map to the same page gracefully.
- *
- * If neither context is present the visitor is redirected home.
- */
+
 
 declare(strict_types=1);
 session_start();
