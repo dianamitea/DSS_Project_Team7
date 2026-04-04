@@ -1,14 +1,5 @@
 <?php
-// db_functions.php
 
-/**
- * Inserts a new user into the database securely.
- * * @param mysqli $conn The database connection
- * @param string $username The user's chosen username
- * @param string $email The user's email address
- * @param string $password The plain-text password (will be hashed)
- * @return bool Returns true on success, false on failure
- */
 function db_insert($conn, $username, $email, $password) {
     // 1. Prepare the SQL query (The '?' marks protect against SQL injection)
     $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
