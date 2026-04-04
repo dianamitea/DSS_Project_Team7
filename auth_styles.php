@@ -1,11 +1,5 @@
 <?php
-/**
- * auth_styles.php
- * ---------------
- * Shared inline styles for auth pages (login.php, register.php).
- * Also includes navbar scroll-shrink + social link styles used across the site.
- * Include this file just before footer.php in auth pages.
- */
+
 ?>
 <style>
 /* ── Auth page layout ────────────────────────────────────────── */
