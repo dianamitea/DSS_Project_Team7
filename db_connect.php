@@ -42,4 +42,10 @@ function db_fetch_one(string $sql, array $params = []): ?array {
     $row = $stmt->fetch();
     return $row !== false ? $row : null;
 }
+
+function db_insert_user(string $username, string $email, string $hashed_password): bool {
+    $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+    $stmt = db()->prepare($sql);
+    return $stmt->execute([$username, $email, $hashed_password]);
+}
 ?>
