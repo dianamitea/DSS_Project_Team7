@@ -204,7 +204,7 @@ require_once __DIR__ . '/header.php';
 
                                     <!-- Remove -->
                                     <td class="text-center">
-                                        <form method="POST" action="add_to_cart.php">
+                                        <form method="POST" action="addtocart.php">
                                             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                                             <input type="hidden" name="action"     value="remove">
                                             <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
@@ -247,7 +247,7 @@ require_once __DIR__ . '/header.php';
                                     <p class="cart-row__price mb-2">€<?= number_format($item['price'], 2) ?> each</p>
 
                                     <div class="d-flex align-items-center justify-content-between gap-2">
-                                        <form method="POST" action="add_to_cart.php" class="qty-form">
+                                        <form method="POST" action="addtocart.php" class="qty-form">
                                             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                                             <input type="hidden" name="action"     value="update">
                                             <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
@@ -268,7 +268,7 @@ require_once __DIR__ . '/header.php';
 
                                         <div class="text-end">
                                             <p class="cart-row__total mb-1">€<?= number_format($item['line_total'], 2) ?></p>
-                                            <form method="POST" action="add_to_cart.php" class="d-inline">
+                                            <form method="POST" action="addtocart.php" class="d-inline">
                                                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                                                 <input type="hidden" name="action"     value="remove">
                                                 <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
