@@ -157,7 +157,7 @@ require_once __DIR__ . '/header.php';
                                     <td class="text-center">
                                         <form
                                             method="POST"
-                                            action="add_to_cart.php"
+                                            action="addtocart.php"
                                             class="qty-form"
                                             aria-label="Update quantity for <?= htmlspecialchars($item['name']) ?>">
                                             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
