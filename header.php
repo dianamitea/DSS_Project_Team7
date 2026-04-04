@@ -1,13 +1,6 @@
 <?php
-/**
- * header.php
- * ----------
- * Global site header — include at the top of every page.
- * Requires: Bootstrap 5, style.css, and an active session (session_start()
- * must be called before including this file, or is called here if not yet started).
- */
 
-// ✅ FIX 1: session_start() is correctly at the very top, before any HTML output.
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -51,9 +44,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     NAVBAR
-════════════════════════════════════════════════════════════ -->
+
 <nav class="navbar navbar-expand-lg sticky-top" id="mainNav" aria-label="Main navigation">
     <div class="container">
 
@@ -158,10 +149,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div><!-- /.container -->
 </nav><!-- /#mainNav -->
 
-<!-- ═══════════════════════════════════════════════════════════
-     FLASH MESSAGES  (set via $_SESSION['flash'])
-     Usage: $_SESSION['flash'] = ['type' => 'success', 'message' => '...'];
-════════════════════════════════════════════════════════════ -->
+
 <?php if (!empty($_SESSION['flash'])): ?>
     <?php $flash = $_SESSION['flash']; unset($_SESSION['flash']); ?>
     <div
