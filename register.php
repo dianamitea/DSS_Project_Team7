@@ -1,14 +1,6 @@
 <?php
 
-/**
- * register.php
- * ------------
- * New-user registration form.
- *   • Validates all inputs server-side
- *   • Hashes passwords with PASSWORD_ARGON2ID (falls back to BCRYPT)
- *   • Stores the new user in `cafe_db`.`users`
- *   • Redirects to login.php with a flash message on success
- */
+
 
 session_start();
 
