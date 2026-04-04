@@ -1,19 +1,5 @@
 <?php
-/**
- * reservation.php
- * ---------------
- * Table-booking form for logged-in users.
- *
- * GET  → Show the booking form (guests redirected to login).
- * POST → Validate inputs, insert into `reservations`, redirect to success.php.
- *
- * SQL used:
- *   SELECT COUNT(*) FROM reservations
- *    WHERE res_date = :date AND res_time = :time AND status != 'cancelled'
- *
- *   INSERT INTO reservations (user_id, res_date, res_time, guests, notes)
- *   VALUES (:uid, :date, :time, :guests, :notes)
- */
+
 
 declare(strict_types=1);
 session_start();
