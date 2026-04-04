@@ -24,17 +24,8 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (3, 'Cakes'),
 (4, 'Pastries'),
 (5, 'Sandwiches'),
-(6, 'Tea'),
 (7, 'Cold Drinks'),
-(8, 'Specialty Coffee'),
-(9, 'Sandwiches'),
-(10, 'Tea'),
-(11, 'Cold Drinks'),
-(12, 'Specialty Coffee'),
-(13, 'Sandwiches'),
-(14, 'Tea'),
-(15, 'Cold Drinks'),
-(16, 'Specialty Coffee');
+(8, 'Specialty Coffee');
 
 
 
@@ -79,62 +70,21 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `im
 (5, 5, 'Tuna Melt', 'Creamy tuna salad with melted cheddar on sourdough, served warm.', 5.75, 'tuna_melt.jpg'),
 (6, 5, 'Veggie Wrap', 'Grilled peppers, hummus, cucumber, spinach and feta rolled in a whole-wheat tortilla.', 5.25, 'veggie_wrap.jpg'),
 (7, 5, 'BLT Panini', 'Bacon, fresh lettuce and sun-dried tomatoes pressed in a ciabatta roll.', 5.50, 'blt_panini.jpg'),
-(8, 6, 'Green Tea', 'Delicate Japanese Sencha green tea, light and refreshing.', 3.00, 'green_tea.jpg'),
-(9, 6, 'Earl Grey', 'Classic black tea blended with bergamot oil, served with a lemon slice.', 3.00, 'earl_grey.jpg'),
-(10, 6, 'Chamomile Herbal Tea', 'Soothing caffeine-free chamomile blossoms, perfect any time of day.', 3.25, 'chamomile_tea.jpg'),
-(11, 6, 'Chai Latte', 'Spiced black tea with cinnamon, cardamom and steamed milk.', 4.25, 'chai_latte.jpg'),
-(12, 6, 'Matcha Latte', 'Ceremonial-grade matcha whisked with frothy oat milk.', 4.75, 'matcha_latte.jpg'),
+(8, 2, 'Green Tea', 'Delicate Japanese Sencha green tea, light and refreshing.', 3.00, 'green_tea.jpg'),
+(9, 2, 'Earl Grey', 'Classic black tea blended with bergamot oil, served with a lemon slice.', 3.00, 'earl_grey.jpg'),
+(10, 2, 'Chamomile Herbal Tea', 'Soothing caffeine-free chamomile blossoms, perfect any time of day.', 3.25, 'chamomile_tea.jpg'),
+(11, 2, 'Chai Latte', 'Spiced black tea with cinnamon, cardamom and steamed milk.', 4.25, 'chai_latte.jpg'),
+(12, 2, 'Matcha Latte', 'Ceremonial-grade matcha whisked with frothy oat milk.', 4.75, 'matcha_latte.jpg'),
 (13, 7, 'Iced Latte', 'Double espresso poured over ice with your choice of milk.', 4.50, 'iced_latte.jpg'),
 (14, 7, 'Mango Smoothie', 'Fresh mango blended with banana, orange juice and a hint of ginger.', 5.00, 'mango_smoothie.jpg'),
 (15, 7, 'Strawberry Lemonade', 'House-made lemonade infused with fresh strawberry purée.', 4.00, 'strawberry_lemonade.jpg'),
 (16, 7, 'Cold Brew Coffee', 'Slow-steeped for 18 hours, smooth with low acidity. Served over ice.', 4.75, 'cold_brew.jpg'),
 (17, 7, 'Sparkling Water', 'Chilled sparkling mineral water with a slice of lemon or lime.', 2.50, 'sparkling_water.jpg'),
-(18, 8, 'Espresso', 'A rich single-origin espresso shot pulled to perfection.', 2.75, 'espresso.jpg'),
 (19, 8, 'Flat White', 'Ristretto espresso with a silky microfoam – the barista\'s choice.', 4.00, 'flat_white.jpg'),
 (20, 8, 'Caramel Macchiato', 'Vanilla syrup, steamed milk, espresso and a drizzle of caramel sauce.', 5.00, 'caramel_macchiato.jpg'),
 (21, 8, 'Hazelnut Mocha', 'Espresso blended with rich chocolate sauce and hazelnut syrup, topped with whipped cream.', 5.25, 'hazelnut_mocha.jpg'),
-(22, 2, 'Blueberry Muffin', 'Freshly baked muffin bursting with juicy blueberries and a golden crumble top.', 3.50, 'blueberry_muffin.jpg'),
-(23, 2, 'Croissant', 'Buttery, flaky all-butter croissant baked fresh every morning.', 3.25, 'croissant.jpg'),
-(24, 5, 'Club Sandwich', 'Triple-decker with grilled chicken, crispy bacon, lettuce, tomato and mayo on toasted white bread.', 6.50, 'club_sandwich.jpg'),
-(25, 5, 'Tuna Melt', 'Creamy tuna salad with melted cheddar on sourdough, served warm.', 5.75, 'tuna_melt.jpg'),
-(26, 5, 'Veggie Wrap', 'Grilled peppers, hummus, cucumber, spinach and feta rolled in a whole-wheat tortilla.', 5.25, 'veggie_wrap.jpg'),
-(27, 5, 'BLT Panini', 'Bacon, fresh lettuce and sun-dried tomatoes pressed in a ciabatta roll.', 5.50, 'blt_panini.jpg'),
-(28, 6, 'Green Tea', 'Delicate Japanese Sencha green tea, light and refreshing.', 3.00, 'green_tea.jpg'),
-(29, 6, 'Earl Grey', 'Classic black tea blended with bergamot oil, served with a lemon slice.', 3.00, 'earl_grey.jpg'),
-(30, 6, 'Chamomile Herbal Tea', 'Soothing caffeine-free chamomile blossoms, perfect any time of day.', 3.25, 'chamomile_tea.jpg'),
-(31, 6, 'Chai Latte', 'Spiced black tea with cinnamon, cardamom and steamed milk.', 4.25, 'chai_latte.jpg'),
-(32, 6, 'Matcha Latte', 'Ceremonial-grade matcha whisked with frothy oat milk.', 4.75, 'matcha_latte.jpg'),
-(33, 7, 'Iced Latte', 'Double espresso poured over ice with your choice of milk.', 4.50, 'iced_latte.jpg'),
-(34, 7, 'Mango Smoothie', 'Fresh mango blended with banana, orange juice and a hint of ginger.', 5.00, 'mango_smoothie.jpg'),
-(35, 7, 'Strawberry Lemonade', 'House-made lemonade infused with fresh strawberry puree.', 4.00, 'strawberry_lemonade.jpg'),
-(36, 7, 'Cold Brew Coffee', 'Slow-steeped for 18 hours, smooth with low acidity. Served over ice.', 4.75, 'cold_brew.jpg'),
-(37, 7, 'Sparkling Water', 'Chilled sparkling mineral water with a slice of lemon or lime.', 2.50, 'sparkling_water.jpg'),
-(38, 8, 'Espresso', 'A rich single-origin espresso shot pulled to perfection.', 2.75, 'espresso.jpg'),
-(39, 8, 'Flat White', 'Ristretto espresso with silky microfoam, the barista choice.', 4.00, 'flat_white.jpg'),
-(40, 8, 'Caramel Macchiato', 'Vanilla syrup, steamed milk, espresso and a drizzle of caramel sauce.', 5.00, 'caramel_macchiato.jpg'),
-(41, 8, 'Hazelnut Mocha', 'Espresso blended with chocolate sauce and hazelnut syrup, topped with whipped cream.', 5.25, 'hazelnut_mocha.jpg'),
-(42, 2, 'Blueberry Muffin', 'Freshly baked muffin bursting with juicy blueberries and a golden crumble top.', 3.50, 'blueberry_muffin.jpg'),
-(43, 2, 'Croissant', 'Buttery, flaky all-butter croissant baked fresh every morning.', 3.25, 'croissant.jpg'),
-(44, 5, 'Club Sandwich', 'Triple-decker with grilled chicken, crispy bacon, lettuce, tomato and mayo on toasted white bread.', 6.50, 'club_sandwich.jpg'),
-(45, 5, 'Tuna Melt', 'Creamy tuna salad with melted cheddar on sourdough, served warm.', 5.75, 'tuna_melt.jpg'),
-(46, 5, 'Veggie Wrap', 'Grilled peppers, hummus, cucumber, spinach and feta rolled in a whole-wheat tortilla.', 5.25, 'veggie_wrap.jpg'),
-(47, 5, 'BLT Panini', 'Bacon, fresh lettuce and sun-dried tomatoes pressed in a ciabatta roll.', 5.50, 'blt_panini.jpg'),
-(48, 2, 'Green Tea', 'Delicate Japanese Sencha green tea, light and refreshing.', 3.00, 'green_tea.jpg'),
-(49, 2, 'Earl Grey', 'Classic black tea blended with bergamot oil, served with a lemon slice.', 3.00, 'earl_grey.jpg'),
-(50, 2, 'Chamomile Herbal Tea', 'Soothing caffeine-free chamomile blossoms, perfect any time of day.', 3.25, 'chamomile_tea.jpg'),
-(51, 2, 'Chai Latte', 'Spiced black tea with cinnamon, cardamom and steamed milk.', 4.25, 'chai_latte.jpg'),
-(52, 2, 'Matcha Latte', 'Ceremonial-grade matcha whisked with frothy oat milk.', 4.75, 'matcha_latte.jpg'),
-(53, 7, 'Iced Latte', 'Double espresso poured over ice with your choice of milk.', 4.50, 'iced_latte.jpg'),
-(54, 7, 'Mango Smoothie', 'Fresh mango blended with banana, orange juice and a hint of ginger.', 5.00, 'mango_smoothie.jpg'),
-(55, 7, 'Strawberry Lemonade', 'House-made lemonade infused with fresh strawberry puree.', 4.00, 'strawberry_lemonade.jpg'),
-(56, 7, 'Cold Brew Coffee', 'Slow-steeped for 18 hours, smooth with low acidity. Served over ice.', 4.75, 'cold_brew.jpg'),
-(57, 7, 'Sparkling Water', 'Chilled sparkling mineral water with a slice of lemon or lime.', 2.50, 'sparkling_water.jpg'),
-(58, 8, 'Espresso', 'A rich single-origin espresso shot pulled to perfection.', 2.75, 'espresso.jpg'),
-(59, 8, 'Flat White', 'Ristretto espresso with silky microfoam, the barista choice.', 4.00, 'flat_white.jpg'),
-(60, 8, 'Caramel Macchiato', 'Vanilla syrup, steamed milk, espresso and a drizzle of caramel sauce.', 5.00, 'caramel_macchiato.jpg'),
-(61, 8, 'Hazelnut Mocha', 'Espresso blended with chocolate sauce and hazelnut syrup, topped with whipped cream.', 5.25, 'hazelnut_mocha.jpg'),
-(62, 4, 'Blueberry Muffin', 'Freshly baked muffin bursting with juicy blueberries and a golden crumble top.', 3.50, 'blueberry_muffin.jpg'),
-(63, 4, 'Croissant', 'Buttery, flaky all-butter croissant baked fresh every morning.', 3.25, 'croissant.jpg');
+(22, 4, 'Blueberry Muffin', 'Freshly baked muffin bursting with juicy blueberries and a golden crumble top.', 3.50, 'blueberry_muffin.jpg'),
+(23, 4, 'Croissant', 'Buttery, flaky all-butter croissant baked fresh every morning.', 3.25, 'croissant.jpg');
 
 -- --------------------------------------------------------
 
@@ -189,7 +139,8 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `orders`
