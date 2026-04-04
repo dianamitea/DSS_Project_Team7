@@ -80,11 +80,11 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `im
 (15, 7, 'Strawberry Lemonade', 'House-made lemonade infused with fresh strawberry purée.', 4.00, 'strawberry_lemonade.jpg'),
 (16, 7, 'Cold Brew Coffee', 'Slow-steeped for 18 hours, smooth with low acidity. Served over ice.', 4.75, 'cold_brew.jpg'),
 (17, 7, 'Sparkling Water', 'Chilled sparkling mineral water with a slice of lemon or lime.', 2.50, 'sparkling_water.jpg'),
-(19, 8, 'Flat White', 'Ristretto espresso with a silky microfoam – the barista\'s choice.', 4.00, 'flat_white.jpg'),
-(20, 8, 'Caramel Macchiato', 'Vanilla syrup, steamed milk, espresso and a drizzle of caramel sauce.', 5.00, 'caramel_macchiato.jpg'),
-(21, 8, 'Hazelnut Mocha', 'Espresso blended with rich chocolate sauce and hazelnut syrup, topped with whipped cream.', 5.25, 'hazelnut_mocha.jpg'),
-(22, 4, 'Blueberry Muffin', 'Freshly baked muffin bursting with juicy blueberries and a golden crumble top.', 3.50, 'blueberry_muffin.jpg'),
-(23, 4, 'Croissant', 'Buttery, flaky all-butter croissant baked fresh every morning.', 3.25, 'croissant.jpg');
+(18, 8, 'Flat White', 'Ristretto espresso with a silky microfoam – the barista\'s choice.', 4.00, 'flat_white.jpg'),
+(19, 8, 'Caramel Macchiato', 'Vanilla syrup, steamed milk, espresso and a drizzle of caramel sauce.', 5.00, 'caramel_macchiato.jpg'),
+(20, 8, 'Hazelnut Mocha', 'Espresso blended with rich chocolate sauce and hazelnut syrup, topped with whipped cream.', 5.25, 'hazelnut_mocha.jpg'),
+(21, 4, 'Blueberry Muffin', 'Freshly baked muffin bursting with juicy blueberries and a golden crumble top.', 3.50, 'blueberry_muffin.jpg'),
+(22, 4, 'Croissant', 'Buttery, flaky all-butter croissant baked fresh every morning.', 3.25, 'croissant.jpg');
 
 -- --------------------------------------------------------
 
