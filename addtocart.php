@@ -1,12 +1,4 @@
 <?php
-/**
- * addtocart.php
- * -------------
- * Gets ?id= from the URL, adds it to $_SESSION['cart'], then
- * redirects back to products.php.
- *
- * Called via:  <a href="addtocart.php?id=<?php echo $product['id']; ?>">
- */
 
 session_start();
 
