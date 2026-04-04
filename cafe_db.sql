@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Apr 04, 2026 at 01:26 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -17,24 +10,13 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `cafe_db`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categories`
---
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `categories`
---
+
 
 INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Coffee'),
@@ -54,11 +36,7 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (15, 'Cold Drinks'),
 (16, 'Specialty Coffee');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `orders`
---
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
@@ -68,9 +46,6 @@ CREATE TABLE `orders` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `orders`
---
 
 INSERT INTO `orders` (`id`, `user_id`, `total_price`, `status`, `created_at`) VALUES
 (5, 1, 12.25, 'completed', '2026-03-28 18:46:57'),
@@ -84,11 +59,6 @@ INSERT INTO `orders` (`id`, `user_id`, `total_price`, `status`, `created_at`) VA
 (13, NULL, 6.00, 'pending', '2026-04-03 20:52:46'),
 (14, NULL, 6.00, 'pending', '2026-04-03 23:14:36');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `products`
---
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
@@ -99,9 +69,7 @@ CREATE TABLE `products` (
   `image_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `products`
---
+
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `image_url`) VALUES
 (1, 1, 'Espresso', 'Strong and classic.', 2.50, 'espresso.jpg'),
@@ -194,11 +162,7 @@ INSERT INTO `reservations` (`id`, `user_id`, `res_date`, `res_time`, `guests`, `
 (4, 1, '2026-04-08', '20:00:00', 2, ''),
 (5, 2, '2026-04-10', '18:00:00', 6, 'confirmed');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `users`
---
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
