@@ -24,8 +24,10 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (3, 'Cakes'),
 (4, 'Pastries'),
 (5, 'Sandwiches'),
+(6, 'Tarts'),
 (7, 'Cold Drinks'),
-(8, 'Specialty Coffee');
+(8, 'Specialty Coffee'),
+(9, 'Breads');
 
 
 
@@ -84,7 +86,9 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `im
 (19, 8, 'Caramel Macchiato', 'Vanilla syrup, steamed milk, espresso and a drizzle of caramel sauce.', 5.00, 'caramel_macchiato.jpg'),
 (20, 8, 'Hazelnut Mocha', 'Espresso blended with rich chocolate sauce and hazelnut syrup, topped with whipped cream.', 5.25, 'hazelnut_mocha.jpg'),
 (21, 4, 'Blueberry Muffin', 'Freshly baked muffin bursting with juicy blueberries and a golden crumble top.', 3.50, 'blueberry_muffin.jpg'),
-(22, 4, 'Croissant', 'Buttery, flaky all-butter croissant baked fresh every morning.', 3.25, 'croissant.jpg');
+(22, 4, 'Croissant', 'Buttery, flaky all-butter croissant baked fresh every morning.', 3.25, 'croissant.jpg')
+(23, 6, 'Lemon Tart', 'A delicate lemon tart with a crisp, buttery crust filled with smooth, tangy lemon cream—perfectly balanced between sweet and refreshing', 6.5,'lemon_tart.jpg')
+(24, 9, 'Sourdough Bread', 'A rustic sourdough loaf with a crisp, golden-brown crust and a soft, airy interior—rich in flavor with a subtle tang, handcrafted for a perfect balance of texture and depth.', 4.0, 'sourdough_bread.jpg');
 
 -- --------------------------------------------------------
 
