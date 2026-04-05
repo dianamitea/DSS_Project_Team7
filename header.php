@@ -180,4 +180,4 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <?php endif; ?>
 
 <main id="main-content">
-<!-- Page content starts here ↓ -->
+

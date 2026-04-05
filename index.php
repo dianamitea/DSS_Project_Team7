@@ -48,11 +48,11 @@ require_once __DIR__ . '/header.php';
                 </p>
 
                 <div class="hero__cta d-flex flex-wrap gap-3 animate-fade-up" style="--delay:.5s">
-                    <!-- FIX 1: menu.php → products.php -->
+                    
                     <a href="products.php" class="btn btn-primary btn-lg">
                         <i class="bi bi-grid me-2" aria-hidden="true"></i>Browse Menu
                     </a>
-                    <!-- FIX 2: reservations.php → reservation.php -->
+                   
                     <a href="reservation.php" class="btn btn-outline-light btn-lg">
                         <i class="bi bi-calendar-check me-2" aria-hidden="true"></i>Book a Table
                     </a>
