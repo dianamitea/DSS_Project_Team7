@@ -71,7 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $credential = trim($_POST['credential'] ?? '');
         $password   = $_POST['password'] ?? '';
 
-        if ($credential === '') $errors['credential'] = 'Please enter your email or username.';
         if ($password   === '') $errors['password']   = 'Please enter your password.';
 
         if (empty($errors)) {
@@ -84,15 +83,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             );
 
             if ($user && password_verify($password, $user['password'])) {
-
                 clearAttempts();
                 session_regenerate_id(true);
-
                 $_SESSION['user_id']  = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['email']    = $user['email'];
 
-              
                 $algo = defined('PASSWORD_ARGON2ID') ? PASSWORD_ARGON2ID : PASSWORD_BCRYPT;
                 if (password_needs_rehash($user['password'], $algo)) {
                     $newHash = password_hash($password, $algo);
@@ -107,11 +103,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 header('Location: ' . $redirect);
                 exit;
-
             } else {
                 recordFailedAttempt();
                 $errors[] = 'The email/username or password is incorrect. Please try again.';
-
                 $attemptsLeft = 5 - ($_SESSION['login_attempts_' . ($_SERVER['REMOTE_ADDR'] ?? '')]['count'] ?? 0);
                 if ($attemptsLeft > 0 && $attemptsLeft <= 3) {
                     $errors[] = "Warning: {$attemptsLeft} attempt(s) remaining before temporary lockout.";

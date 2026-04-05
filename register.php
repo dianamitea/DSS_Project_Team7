@@ -1,11 +1,11 @@
 <?php
 
 
-
 session_start();
 
 // Already logged in → redirect home
 if (!empty($_SESSION['user_id'])) {
+                $_SESSION['username'] = $username; // Set the username in session
     header('Location: index.php');
     exit;
 }

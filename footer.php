@@ -54,8 +54,8 @@
                 <h6>Account</h6>
                 <nav aria-label="Account navigation">
                     <?php if (!empty($_SESSION['user_id'])): ?>
-                        <a href="account.php">My Account</a>
-                        <a href="orders.php">My Orders</a>
+                        <a href="my_account.php">My Account</a>
+                        <a href="my_orders.php">My Orders</a>
                         <a href="logout.php">Logout</a>
                     <?php else: ?>
                         <a href="login.php">Login</a>

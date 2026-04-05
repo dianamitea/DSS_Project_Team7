@@ -128,6 +128,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <i class="bi bi-person-circle" aria-hidden="true"></i>
                         <?= htmlspecialchars($_SESSION['username'] ?? 'Guest') ?>
                     </span>
+                    <a href="my_account.php" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-person me-1" aria-hidden="true"></i>My Account
+                    </a>
+                    <a href="my_orders.php" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-list-check me-1" aria-hidden="true"></i>My Orders
+                    </a>
                     <a href="logout.php" class="btn btn-outline-light btn-sm">
                         <i class="bi bi-box-arrow-right me-1" aria-hidden="true"></i>Logout
                     </a>
