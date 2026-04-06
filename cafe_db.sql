@@ -90,7 +90,8 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `im
 (24, 8, 'Lemon Tart', 'A delicate lemon tart with a crisp, buttery crust filled with smooth, tangy lemon cream—perfectly balanced between sweet and refreshing', 6.50, 'lemon_tart.jpg'),
 (25, 1, 'Sourdough Bread', 'A rustic sourdough loaf with a crisp, golden-brown crust and a soft, airy interior—rich in flavor with a subtle tang, handcrafted for a perfect balance of texture and depth.', 4.00, 'sourdough_bread.jpg'),
 (26, 2, 'Medovik Cake', 'Layers of soft, caramelized honey cake blanketed in a tangy-sweet sour cream frosting. A delicate, melt-in-your-mouth European classic that perfectly balances sweet and tart.', 15.50, 'honey_cake.jpg'),
-(27, 8, 'Forest Fruit Tart', 'A crisp, buttery pastry shell filled with smooth vanilla custard and piled high with fresh, vibrant forest berries like raspberries, blueberries, and blackberries.', 8.00, 'ffruit_tart.jpg');
+(27, 8, 'Forest Fruit Tart', 'A crisp, buttery pastry shell filled with smooth vanilla custard and piled high with fresh, vibrant forest berries like raspberries, blueberries, and blackberries.', 8.00, 'ffruit_tart.jpg'),
+(28, 1, 'Rye Bread','Freshly baked rye bread with a rich, hearty flavor and slightly tangy taste.', 6.0,'rye_bread.jpg');
 
 
 
